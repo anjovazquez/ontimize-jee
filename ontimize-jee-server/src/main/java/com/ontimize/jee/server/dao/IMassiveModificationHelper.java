@@ -55,4 +55,6 @@ public interface IMassiveModificationHelper {
 
 	boolean isMassiveModification(Object key, Map<?, ?> keysValues);
 
+	boolean isMassiveModification(Object key, Map<?, ?> keysValues);
+
 }

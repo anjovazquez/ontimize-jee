@@ -176,6 +176,7 @@ public class DefaultOntimizeDaoHelper implements IOntimizeDaoHelper, Application
 		return erResult;
 	}
 
+
 	/*
 	 * (non-Javadoc)
 	 * @see com.ontimize.jee.server.services.core.IOntimizeService#query(com.ontimize.jee.server.dao.IOntimizeDaoSupport, java.util.Map, java.util.List, java.lang.String,

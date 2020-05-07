@@ -196,6 +196,7 @@ public class OntimizeCassandraDaoSupport implements IOntimizeDaoSupport, Applica
 	public AdvancedEntityResult paginationQuery(Map<?, ?> keysValues, List<?> attributes, int recordNumber, int startIndex, List<?> orderBy, String queryId) {
 		return this.paginationQuery(keysValues, attributes, recordNumber, startIndex, orderBy, queryId, null);
 	}
+
 	@Override
 	public AdvancedEntityResult paginationQuery(Map<?, ?> keysValues, List<?> attributes, int recordNumber, int startIndex, List<?> orderBy, String queryId,
 			ISQLQueryAdapter adapter) {
@@ -431,15 +432,14 @@ public class OntimizeCassandraDaoSupport implements IOntimizeDaoSupport, Applica
 		Update update = QueryBuilder.update(this.getKeyspace(), this.getTableName());
 		Assignments assignments = update.with();
 
+		Iterator<Map.Entry<String, Object>> iterator = hValidAttributesValues.entrySet().iterator();
 
-		Iterator<Map.Entry<String,Object>> iterator =  hValidAttributesValues.entrySet().iterator();
-
-		while(iterator.hasNext()){
+		while (iterator.hasNext()) {
 			Entry<String, Object> current = iterator.next();
 			assignments.and(QueryBuilder.set(current.getKey(), current.getValue()));
 		}
 
-		Iterator<Map.Entry<String,Object>> keyIterator = hValidKeysValues.entrySet().iterator();
+		Iterator<Map.Entry<String, Object>> keyIterator = hValidKeysValues.entrySet().iterator();
 
 		List<String> keys = new ArrayList<>();
 		List<Object> values = new ArrayList<>();

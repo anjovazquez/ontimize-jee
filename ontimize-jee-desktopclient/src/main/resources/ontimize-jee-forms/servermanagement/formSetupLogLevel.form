@@ -13,7 +13,7 @@
 		<com.ontimize.jee.desktopclient.components.servermanagement.LoggerTable attr="DETAILS" entity="DETAILS" 
 		      cols="OntimizeLogger;Logger;Level;Trace;Debug;Info;Warn;Error;Off;Inherit" 
 		      visiblecols="Logger;Level;Trace;Debug;Info;Warn;Error;Off;Inherit"
-		      numrowscolumn="false">
+			numrowscolumn="false">
 		</com.ontimize.jee.desktopclient.components.servermanagement.LoggerTable>
 	</Column>
 </Form>

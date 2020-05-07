@@ -177,12 +177,12 @@ public class One2OneDaoHelper implements ApplicationContextAware {
 						if (keyValue != null) {
 							// Update only if some field will be valid
 							try {
-								this.checkRequiredColumns(attributesValues, subDao.getRequiredColumns(), false);
-								EntityResult resUpdateSecond = this.updateSubDao(daoHelper, attributesValues, subDao, keyValue);
-								CheckingTools.checkValidEntityResult(resUpdateSecond, "E_UPDATING_SEOCONDARY_DAO");
-								if (resUpdateSecond != null) {
-									result.putAll(resUpdateSecond);
-								}
+							this.checkRequiredColumns(attributesValues, subDao.getRequiredColumns(), false);
+							EntityResult resUpdateSecond = this.updateSubDao(daoHelper, attributesValues, subDao, keyValue);
+							CheckingTools.checkValidEntityResult(resUpdateSecond, "E_UPDATING_SEOCONDARY_DAO");
+							if (resUpdateSecond != null) {
+								result.putAll(resUpdateSecond);
+							}
 								opDone = true;
 							} catch (Exception sqlError) {
 								someError = sqlError;

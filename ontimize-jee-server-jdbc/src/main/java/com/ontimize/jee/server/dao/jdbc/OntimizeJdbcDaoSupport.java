@@ -53,7 +53,6 @@ import org.springframework.jdbc.core.support.JdbcDaoSupport;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.JdbcUtils;
 import org.springframework.jdbc.support.KeyHolder;
-import org.springframework.jdbc.support.nativejdbc.NativeJdbcExtractor;
 import org.springframework.util.Assert;
 
 import com.ontimize.db.AdvancedEntityResult;
@@ -110,7 +109,7 @@ public class OntimizeJdbcDaoSupport extends JdbcDaoSupport implements Applicatio
 	/** The Constant PLACEHOLDER_COLUMNS. */
 	protected static final String							PLACEHOLDER_COLUMNS				= "#COLUMNS#";
 	/** The Constant PLACEHOLDER_SCHEMA. */
-	protected static final String 							PLACEHOLDER_SCHEMA 				= "#SCHEMA#";
+	protected static final String							PLACEHOLDER_SCHEMA				= "#SCHEMA#";
 
 	/** Context used to retrieve and manage database metadata. */
 	protected final OntimizeTableMetaDataContext			tableMetaDataContext;
@@ -258,7 +257,7 @@ public class OntimizeJdbcDaoSupport extends JdbcDaoSupport implements Applicatio
 
 		SQLStatement stSQL = null;
 
-		if (queryTemplateInformation!=null){
+		if (queryTemplateInformation != null) {
 			List<String> validColumns = queryTemplateInformation.getValidColumns();
 			kvValidKeysValues = this.getValidQueryingKeysValues(kvValidKeysValues, validColumns);
 
@@ -301,25 +300,41 @@ public class OntimizeJdbcDaoSupport extends JdbcDaoSupport implements Applicatio
 
 		String sqlQuery = stSQL.getSQLStatement();
 		List vValues = stSQL.getValues();
+<<<<<<< HEAD
 		EntityResult erResult = this.getJdbcTemplate().query(sqlQuery,  vValues.toArray(), new EntityResultResultSetExtractor(this.getStatementHandler(), queryTemplateInformation));
+=======
+		EntityResult erResult = this.getJdbcTemplate().query(sqlQuery, vValues.toArray(), new EntityResultResultSetExtractor(this.getStatementHandler(), queryTemplateInformation));
+>>>>>>> develop
 
 		if ((erResult == null) || (erResult.getCode() == EntityResult.OPERATION_WRONG)) {
 			OntimizeJdbcDaoSupport.logger.error("Error executed record count query:{} : {}", erResult.getMessage(), sqlQuery);
 			return 0;
 		}
+<<<<<<< HEAD
 		
+=======
+
+>>>>>>> develop
 		Vector<?> v = (Vector<?>) erResult.get(SQLStatementBuilder.COUNT_COLUMN_NAME);
 		if ((v == null) || v.isEmpty()) {
 			OntimizeJdbcDaoSupport.logger.error("Error executed record cound query. The result not contain record number.");
 			return 0;
 		}
 		return ((Number) v.get(0)).intValue();
+<<<<<<< HEAD
 				}
+=======
+	}
+>>>>>>> develop
 
 	protected String performPlaceHolderPagination(String sqlTemplate, PageableInfo pageableInfo) {
 		if (pageableInfo == null) {
 			return sqlTemplate;
+<<<<<<< HEAD
 				}
+=======
+		}
+>>>>>>> develop
 		return this.getStatementHandler().convertPaginationStatement(sqlTemplate, pageableInfo.getStartIndex(), pageableInfo.getRecordNumber());
 	}
 
@@ -1327,15 +1342,6 @@ public class OntimizeJdbcDaoSupport extends JdbcDaoSupport implements Applicatio
 		this.tableMetaDataContext.setOverrideIncludeSynonymsDefault(override);
 	}
 
-	/**
-	 * Set the {@link NativeJdbcExtractor} to use to retrieve the native connection if necessary.
-	 *
-	 * @param nativeJdbcExtractor
-	 *            the new native jdbc extractor
-	 */
-	public void setNativeJdbcExtractor(final NativeJdbcExtractor nativeJdbcExtractor) {
-		this.tableMetaDataContext.setNativeJdbcExtractor(nativeJdbcExtractor);
-	}
 
 	// -------------------------------------------------------------------------
 	// Methods handling compilation issues
@@ -1418,7 +1424,11 @@ public class OntimizeJdbcDaoSupport extends JdbcDaoSupport implements Applicatio
 			}
 
 			JdbcEntitySetupType baseSetup = JAXB.unmarshal(reader, JdbcEntitySetupType.class);
+<<<<<<< HEAD
 
+=======
+			
+>>>>>>> develop
 			// Support to Dao extensions
 			JdbcEntitySetupType setupConfig = this.checkDaoExtensions(baseSetup, path, pathToPlaceHolder);
 
